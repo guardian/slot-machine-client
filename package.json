@@ -1,0 +1,25 @@
+{
+  "name": "@guardian/slot-machine-client",
+  "version": "0.1.0",
+  "description": "Client lib for Slot Machine",
+  "author": "Nicolas Long <nicolas.long@theguardian.com>",
+  "license": "MIT",
+  "main": "dist/client.js",
+  "types": "dist/client.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guardian/slot-machine-client.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/md5": "^2.1.33",
+    "@types/node": "^12.12.14",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {}
+}
