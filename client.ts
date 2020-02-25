@@ -1,4 +1,3 @@
-import fetch, { Response } from "node-fetch";
 import { Metadata } from "./types";
 
 const apiURL = "https://contributions.guardianapis.com/epic";
