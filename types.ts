@@ -36,9 +36,9 @@ type Targeting = {
   // API) does not capture every case of recurring contributors or last
   // contributions (i.e. the latter two are not simply a subset of the first -
   // we need all three!).
-  showSupportMessaging?: boolean; // TODO make required once clients updated
-  isRecurringContributor?: boolean; // TODO make required once clients updated
-  lastOneOffContributionDate?: string; // Platform to send undefined or date as string -> Date.now().toString()
+  showSupportMessaging: boolean;
+  isRecurringContributor: boolean;
+  lastOneOffContributionDate?: number; // Timestamp
 };
 
 export type Metadata = {
