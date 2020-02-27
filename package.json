@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "publish": "yarn version --patch && yarn build && npm publish --access public"
+    "publishToNPM": "yarn version --patch && yarn build && npm publish --access public"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
