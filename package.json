@@ -1,6 +1,6 @@
 {
   "name": "@guardian/slot-machine-client",
-  "version": "0.1.36",
+  "version": "0.1.38",
   "description": "Client lib for Slot Machine",
   "author": "Nicolas Long <nicolas.long@theguardian.com>",
   "license": "MIT",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "publishToNPM": "yarn version --patch && yarn build && yarn pack && yarn publish --access public"
+    "publish": "yarn version --patch && yarn build && yarn publish --access public"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
