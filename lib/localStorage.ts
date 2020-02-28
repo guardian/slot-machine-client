@@ -54,7 +54,7 @@ export const get = (key: string) => {
   return data;
 };
 
-const getRaw = (key: string) => {
+const getRaw = (key: string): any => {
   if (isAvailable) {
     return storage.getItem(key);
   }
