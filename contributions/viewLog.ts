@@ -17,11 +17,6 @@ import { get as getItem, set as setItem } from '../lib/localStorage';
 const viewKey = 'gu.contributions.views';
 const viewLog = getItem(viewKey) || [];
 
-// interface ViewLog {
-//   date: number;
-//   testId: string;
-// }
-
 // Hard limit on the number of entries to keep in the viewLog.
 const maxLogEntries = 50;
 
