@@ -21,7 +21,8 @@ interface View {
   date: number;
   testId: string;
 }
-type ViewLog = View[];
+
+export type ViewLog = View[];
 
 type Targeting = {
   contentType: string;

@@ -10,16 +10,17 @@
 // NOTE: this is a short term approach to ensure backwards compatibility with
 // the Frontend view log. As Slot Machine grows, we'll move towards a more
 // centralised way of managing the slot state from an upper level.
+import { ViewLog } from '../types';
 import { get as getItem, set as setItem } from '../lib/localStorage';
 
 // The key must be backwards compatible with Frontend.
 const viewKey = 'gu.contributions.views';
 const viewLog = getItem(viewKey) || [];
 
-interface ViewLog {
-  date: number;
-  testId: string;
-}
+// interface ViewLog {
+//   date: number;
+//   testId: string;
+// }
 
 // Hard limit on the number of entries to keep in the viewLog.
 const maxLogEntries = 50;
@@ -27,8 +28,11 @@ const maxLogEntries = 50;
 /**
  * Return the entire viewLog.
  */
-export const getViewLog = (): ViewLog[] | null => {
-  return getItem(viewKey);
+export const getViewLog = (): ViewLog | void => {
+  // Return undefined instead of null if view log does not exist
+  // Needed because the localStorage API returns null for non-existing keys
+  // but Contributions API expects a view log or undefined.
+  return getItem(viewKey) || undefined;
 };
 
 /**
