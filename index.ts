@@ -2,7 +2,5 @@ export { getBodyEnd } from './slots';
 export {
   getViewLog,
   logView,
-  getNumViewsInPreviousDays,
-  getTotalNumViews,
-  clearViewLog
+  getNumViewsInPreviousDays
 } from './contributions/viewLog';
