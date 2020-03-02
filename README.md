@@ -3,6 +3,15 @@
 A basic (JS) client for Slot Machine. If you are reading this and don't know
 what Slot Machine is, this library is probably not useful for you.
 
+## Local dev
+
+With yarn, you can publish in a local project if you have this library
+on your local path with something like:
+
+    yarn add file: ../slot-machine-client
+
+(Vary depending on the relative locations of this library to the client.)
+
 ## Publishing
 
 On your feature branch, increment the version in the `package.json` file.
