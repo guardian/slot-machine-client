@@ -20,13 +20,18 @@ import {
 const viewKey = 'gu.contributions.views';
 const viewLog = getItem(viewKey) || [];
 
+interface ViewLog {
+  date: number;
+  testId: string;
+}
+
 // Hard limit on the number of entries to keep in the viewLog.
 const maxLogEntries = 50;
 
 /**
  * Return the entire viewLog.
  */
-export const getViewLog = () => {
+export const getViewLog = (): ViewLog[] | null => {
   return getItem(viewKey);
 };
 

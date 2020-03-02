@@ -15,9 +15,9 @@ const checkAvailability = (): boolean => {
 const storage = window.localStorage;
 const isAvailable = checkAvailability();
 
-export const get = (key: string) => {
+export const get = (key: string): any => {
   if (!isAvailable) {
-    return;
+    return null;
   }
 
   let data;
@@ -54,30 +54,43 @@ export const get = (key: string) => {
   return data;
 };
 
-const getRaw = (key: string): any => {
+const getRaw = (key: string): string | null => {
   if (isAvailable) {
     return storage.getItem(key);
   }
+
+  return null;
 };
 
 export const set = (
   key: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any> = {}
-) => {
+): void => {
   if (!isAvailable) {
     return;
   }
 
-  return storage.setItem(
+  storage.setItem(
     key,
     JSON.stringify({
       value,
       expires: options.expires
     })
   );
+};
+
+// Prevents any existing value from being overwritten
+export const setIfNotExists = (
+  key: string,
+  value: any,
+  options: Record<string, any> = {}
+): void => {
+  if (getRaw(key) !== null) {
+    return;
+  }
+
+  set(key, value, options);
 };
 
 export const remove = (key: string): void => {
