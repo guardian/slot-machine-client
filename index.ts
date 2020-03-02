@@ -1,4 +1,4 @@
-export { getBodyEnd } from './contributions/epic';
+export { getBodyEnd } from './slots';
 export {
   getViewLog,
   logView,

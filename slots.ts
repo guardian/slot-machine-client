@@ -1,4 +1,4 @@
-import { Metadata } from '../types';
+import { Metadata } from './types';
 
 const apiURL = 'https://contributions.guardianapis.com/epic';
 
