@@ -10,11 +10,7 @@
 // NOTE: this is a short term approach to ensure backwards compatibility with
 // the Frontend view log. As Slot Machine grows, we'll move towards a more
 // centralised way of managing the slot state from an upper level.
-import {
-  get as getItem,
-  set as setItem,
-  remove as removeItem
-} from '../lib/localStorage';
+import { get as getItem, set as setItem } from '../lib/localStorage';
 
 // The key must be backwards compatible with Frontend.
 const viewKey = 'gu.contributions.views';
@@ -64,13 +60,3 @@ export const getNumViewsInPreviousDays = (
       (testId ? view.testId === testId : true) && view.date > now - ms
   ).length;
 };
-
-/**
- * Get the total number of views.
- */
-export const getTotalNumViews = (): number => viewLog.length;
-
-/**
- * Clear the viewLog entirely.
- */
-export const clearViewLog = (): void => removeItem(viewKey);
