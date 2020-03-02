@@ -28,7 +28,7 @@ const maxLogEntries = 50;
 /**
  * Return the entire viewLog.
  */
-export const getViewLog = (): ViewLog | void => {
+export const getViewLog = (): ViewLog | undefined => {
   // Return undefined instead of null if view log does not exist
   // Needed because the localStorage API returns null for non-existing keys
   // but Contributions API expects a view log or undefined.
