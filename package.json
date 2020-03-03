@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
     "publishToNPM": "yarn version --patch && yarn build && yarn publish --access public",
     "test": "jest"
   },

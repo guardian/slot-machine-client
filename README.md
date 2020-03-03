@@ -5,12 +5,37 @@ what Slot Machine is, this library is probably not useful for you.
 
 ## Local dev
 
-With yarn, you can publish in a local project if you have this library
-on your local path with something like:
+### Watch for changes
 
-    yarn add file: ../slot-machine-client
+```
+$ yarn dev
+```
 
-(Vary depending on the relative locations of this library to the client.)
+### Point a project to your local version of slot-machine-client
+
+With [`yarn link`] you can develop against a locally checked out version of
+this client:
+
+In your local checkout of `slot-machine-client`:
+
+```
+$ yarn link
+```
+
+And then in the project consuming the client:
+
+```
+$ yarn link "@guardian/slot-machine-client"
+```
+
+To revert back to using the published version of the package:
+
+```
+$ yarn unlink "@guardian/slot-machine-client"
+$ yarn install --force
+```
+
+[`yarn link`]: https://classic.yarnpkg.com/en/docs/cli/link/
 
 NOTE: Ensure you build this library before adding it locally to your project, by running `yarn build`.
 
