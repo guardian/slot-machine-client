@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "publishToNPM": "yarn version --patch && yarn build && yarn publish --access public"
+    "publishToNPM": "yarn version --patch && yarn build && yarn publish --access public",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
