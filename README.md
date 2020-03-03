@@ -12,6 +12,8 @@ on your local path with something like:
 
 (Vary depending on the relative locations of this library to the client.)
 
+NOTE: Ensure you build this library before adding it locally to your project, by running `yarn build`.
+
 ## Publishing
 
 On your feature branch, increment the version in the `package.json` file.
