@@ -32,6 +32,7 @@ type Targeting = {
   isPaidContent: boolean;
   tags: Tag[];
   epicViewLog?: ViewLog;
+  mvtId: number;
 
   // Note, it turns out that showSupportMessaging (defined in the Members Data
   // API) does not capture every case of recurring contributors or last
