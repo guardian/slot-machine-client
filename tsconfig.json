@@ -3,7 +3,7 @@
     "outDir": "dist",
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es2018",
+    "target": "ES5",
     "strict": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
