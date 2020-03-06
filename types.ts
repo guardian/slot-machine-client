@@ -24,7 +24,7 @@ interface View {
 
 export type ViewLog = View[];
 
-type Targeting = {
+export type Targeting = {
   contentType: string;
   sectionName: string;
   shouldHideReaderRevenue: boolean;
