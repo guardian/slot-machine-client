@@ -24,10 +24,10 @@ const maxLogEntries = 50;
  * Return the entire viewLog.
  */
 export const getViewLog = (): ViewLog | undefined => {
-  // Return undefined instead of null if view log does not exist
-  // Needed because the localStorage API returns null for non-existing keys
-  // but Contributions API expects a view log or undefined.
-  return getItem(viewKey) || undefined;
+    // Return undefined instead of null if view log does not exist
+    // Needed because the localStorage API returns null for non-existing keys
+    // but Contributions API expects a view log or undefined.
+    return getItem(viewKey) || undefined;
 };
 
 /**
@@ -35,27 +35,24 @@ export const getViewLog = (): ViewLog | undefined => {
  * The number of entries is limited to the number in maxLogEntries.
  */
 export const logView = (testId: string): void => {
-  viewLog.push({
-    date: new Date().getTime(),
-    testId
-  });
+    viewLog.push({
+        date: new Date().getTime(),
+        testId,
+    });
 
-  setItem(viewKey, viewLog.slice(-maxLogEntries));
+    setItem(viewKey, viewLog.slice(-maxLogEntries));
 };
 
 /**
  * Get the number of views in the previous number of days.
  * Optionally filters by test ID.
  */
-export const getNumViewsInPreviousDays = (
-  days: number,
-  testId?: string
-): number => {
-  const ms = days * 1000 * 60 * 60 * 24;
-  const now = new Date().getTime();
+export const getNumViewsInPreviousDays = (days: number, testId?: string): number => {
+    const ms = days * 1000 * 60 * 60 * 24;
+    const now = new Date().getTime();
 
-  return viewLog.filter(
-    (view: { testId: string; date: number }) =>
-      (testId ? view.testId === testId : true) && view.date > now - ms
-  ).length;
+    return viewLog.filter(
+        (view: { testId: string; date: number }) =>
+            (testId ? view.testId === testId : true) && view.date > now - ms,
+    ).length;
 };
