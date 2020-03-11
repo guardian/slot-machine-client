@@ -39,6 +39,7 @@ export type Targeting = {
     isPaidContent: boolean;
     tags: Tag[];
     epicViewLog?: ViewLog;
+    weeklyArticleHistory?: WeeklyArticleHistory;
     mvtId: number;
 
     // Note, it turns out that showSupportMessaging (defined in the Members Data
