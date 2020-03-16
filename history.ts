@@ -18,31 +18,30 @@ export const getWeeklyArticleHistory = (): WeeklyArticleHistory | undefined => {
  * If so, increment the value; otherwise, create new object and set counter to 1
  */
 export const incrementWeeklyArticleCount = (): void => {
-    const WeeklyArticleHistory = getItem(historyWeeklyKey) || [];
+    const weeklyArticleHistory = getItem(historyWeeklyKey) || [];
 
     if (
-        WeeklyArticleHistory[0] &&
-        WeeklyArticleHistory[0].week &&
-        WeeklyArticleHistory[0].week === mondayThisWeek
+        weeklyArticleHistory[0] &&
+        weeklyArticleHistory[0].week &&
+        weeklyArticleHistory[0].week === mondayThisWeek
     ) {
-        // Increment this week's counter
-        WeeklyArticleHistory[0].count += 1;
+        // Increment this week's counter & save updated array
+        weeklyArticleHistory[0].count += 1;
+        setItem(historyWeeklyKey, weeklyArticleHistory);
     } else {
         // Create new counter for this week
-        WeeklyArticleHistory.unshift({
+        weeklyArticleHistory.unshift({
             week: mondayThisWeek,
             count: 1,
         });
 
-        // Remove any weeks older than a year
+        // Filter out any weeks older than 1 year
         const oneYearAgo = mondayThisWeek - 365;
-        const firstOldWeekIndex = WeeklyArticleHistory.findIndex(
-            (c: WeeklyArticleLog) => c.week && c.week < oneYearAgo,
+        const weeksNewerThanOneYear = weeklyArticleHistory.filter(
+            (weeklyArticleLog: WeeklyArticleLog) => weeklyArticleLog.week > oneYearAgo,
         );
-        if (firstOldWeekIndex > 0) {
-            WeeklyArticleHistory.splice(firstOldWeekIndex);
-        }
-    }
 
-    setItem(historyWeeklyKey, WeeklyArticleHistory);
+        // Save filtered out history array
+        setItem(historyWeeklyKey, weeksNewerThanOneYear);
+    }
 };
