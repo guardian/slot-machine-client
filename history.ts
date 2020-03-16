@@ -19,6 +19,7 @@ export const getWeeklyArticleHistory = (): WeeklyArticleHistory | undefined => {
  */
 export const incrementWeeklyArticleCount = (): void => {
     const weeklyArticleHistory = getItem(historyWeeklyKey) || [];
+    console.log('incrementWeeklyArticleCount');
 
     if (
         weeklyArticleHistory[0] &&
@@ -35,13 +36,13 @@ export const incrementWeeklyArticleCount = (): void => {
             count: 1,
         });
 
-        // Filter out any weeks older than 1 year
+        // Keep only weeks newer than 1 year
         const oneYearAgo = mondayThisWeek - 365;
         const weeksNewerThanOneYear = weeklyArticleHistory.filter(
-            (weeklyArticleLog: WeeklyArticleLog) => weeklyArticleLog.week > oneYearAgo,
+            (weeklyArticleLog: WeeklyArticleLog) => weeklyArticleLog.week >= oneYearAgo,
         );
 
-        // Save filtered out history array
+        // Save new array
         setItem(historyWeeklyKey, weeksNewerThanOneYear);
     }
 };
