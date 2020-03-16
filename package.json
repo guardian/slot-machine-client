@@ -1,6 +1,6 @@
 {
   "name": "@guardian/slot-machine-client",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Client lib for Slot Machine",
   "author": "Nicolas Long <nicolas.long@theguardian.com>",
   "license": "MIT",
