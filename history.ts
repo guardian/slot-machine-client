@@ -19,7 +19,6 @@ export const getWeeklyArticleHistory = (): WeeklyArticleHistory | undefined => {
  */
 export const incrementWeeklyArticleCount = (): void => {
     const weeklyArticleHistory = getItem(historyWeeklyKey) || [];
-    console.log('incrementWeeklyArticleCount');
 
     if (
         weeklyArticleHistory[0] &&
