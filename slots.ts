@@ -33,8 +33,6 @@ export const initSlot = (): void => {
                         reminderDate: epicReminderSubmit.getAttribute('data-reminder-date'),
                         isPreContribution: true,
                     });
-                    console.log('Reminder Form: ');
-                    console.log(values);
                     fetch(reminderUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
