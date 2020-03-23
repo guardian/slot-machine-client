@@ -32,13 +32,17 @@ export const initSlot = (): void => {
     // .submitting
     // .error
     // .success
-    const epicReminder = document.querySelector('#epicReminder');
+    const epicReminder = document.querySelector<HTMLElement>(
+        '[data-target="contributions-epic-reminder"]',
+    );
     if (epicReminder) {
-        const epicReminderSubmit = document.querySelector('#epicReminderSubmit');
+        const epicReminderSubmit = document.querySelector<HTMLButtonElement>(
+            '[data-target="submit"]',
+        );
         if (epicReminderSubmit) {
             epicReminderSubmit.addEventListener('click', () => {
                 const epicReminderInput = document.querySelector<HTMLInputElement>(
-                    '#epicReminderInput',
+                    '[data-target="input"]',
                 );
                 if (epicReminderInput) {
                     // Valid input field
