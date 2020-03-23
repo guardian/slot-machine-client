@@ -2,8 +2,6 @@ import { Metadata } from './types';
 
 const apiURL = 'https://contributions.guardianapis.com/epic';
 
-const reminderUrl = 'https://contribution-reminders-code.support.guardianapis.com/remind-me'; // CODE
-
 const checkForErrors = (response: any): any => {
     if (!response.ok) {
         throw Error(response.statusText);
@@ -26,7 +24,12 @@ export const initSlot = (): void => {
         return re.test(String(email).toLowerCase());
     };
 
-    // Form States:
+    const reminderEndpoint =
+        process.env.NODE_ENV === 'production'
+            ? 'https://contribution-reminders.support.guardianapis.com/remind-me'
+            : 'https://contribution-reminders-code.support.guardianapis.com/remind-me';
+
+    // Form states controlled by the addition/removal of a class name in the component root:
     // default
     // .invalid
     // .submitting
@@ -45,13 +48,13 @@ export const initSlot = (): void => {
                     '[data-target="input"]',
                 );
                 if (epicReminderInput) {
-                    // Valid input field
                     const inputValue = epicReminderInput.value.trim();
                     if (!inputValue || !isEmailAddressValid(inputValue)) {
+                        // Update form state: invalid
                         epicReminder.classList.add('invalid');
                         return;
                     }
-
+                    // Update form state: submitting
                     epicReminder.classList.add('submitting');
                     epicReminder.classList.remove('invalid');
                     const formValues = {
@@ -59,7 +62,8 @@ export const initSlot = (): void => {
                         reminderDate: epicReminderSubmit.getAttribute('data-reminder-date'),
                         isPreContribution: true,
                     };
-                    fetch(reminderUrl, {
+                    // Submit form
+                    fetch(reminderEndpoint, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -72,10 +76,12 @@ export const initSlot = (): void => {
                             if (json !== 'OK') {
                                 throw Error('Server error');
                             }
+                            // Update form state: success
                             epicReminder.classList.add('success');
                         })
                         .catch(error => {
                             console.log('Error creating reminder: ', error);
+                            // Update form state: error
                             epicReminder.classList.add('error');
                         })
                         .finally(() => epicReminder.classList.remove('submitting'));
