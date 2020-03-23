@@ -4,7 +4,7 @@ const apiURL = 'https://contributions.guardianapis.com/epic';
 
 const reminderUrl = 'https://contribution-reminders-code.support.guardianapis.com/remind-me'; // CODE
 
-const checkForErrors = (response: any) => {
+const checkForErrors = (response: any): any => {
     if (!response.ok) {
         throw Error(response.statusText);
     }
@@ -21,22 +21,46 @@ export const getBodyEnd = (meta: Metadata, url: string = apiURL): Promise<Respon
 };
 
 export const initSlot = (): void => {
+    const isEmailAddressValid = (email: string): boolean => {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    // Form States:
+    // default
+    // .invalid
+    // .submitting
+    // .error
+    // .success
     const epicReminder = document.querySelector('#epicReminder');
     if (epicReminder) {
         const epicReminderSubmit = document.querySelector('#epicReminderSubmit');
         if (epicReminderSubmit) {
             epicReminderSubmit.addEventListener('click', () => {
-                const epicReminderInput = document.querySelector('#epicReminderInput');
-                if (epicReminderInput && epicReminderInput.value) {
-                    const values = JSON.stringify({
-                        email: epicReminderInput.value,
+                const epicReminderInput = document.querySelector<HTMLInputElement>(
+                    '#epicReminderInput',
+                );
+                if (epicReminderInput) {
+                    // Valid input field
+                    const inputValue = epicReminderInput.value.trim();
+                    if (!inputValue || !isEmailAddressValid(inputValue)) {
+                        epicReminder.classList.add('invalid');
+                        return;
+                    }
+
+                    epicReminder.classList.add('submitting');
+                    epicReminder.classList.remove('invalid');
+                    const formValues = {
+                        email: inputValue,
                         reminderDate: epicReminderSubmit.getAttribute('data-reminder-date'),
                         isPreContribution: true,
-                    });
+                    };
                     fetch(reminderUrl, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: values,
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formValues),
                     })
                         .then(checkForErrors)
                         .then(response => response.json())
@@ -44,9 +68,13 @@ export const initSlot = (): void => {
                             if (json !== 'OK') {
                                 throw Error('Server error');
                             }
-                            epicReminder.classList.add('submitted');
+                            epicReminder.classList.add('success');
                         })
-                        .catch(error => console.error('Error: ', error));
+                        .catch(error => {
+                            console.log('Error creating reminder: ', error);
+                            epicReminder.classList.add('error');
+                        })
+                        .finally(() => epicReminder.classList.remove('submitting'));
                 }
             });
         }
