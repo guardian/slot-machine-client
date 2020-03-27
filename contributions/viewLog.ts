@@ -1,14 +1,14 @@
 // This is a set of helper functions to manage the Epic View Log on the client.
 // The view log is an object persisted in localStorage which contains an array
 // of objects with each entry containing the test ID and the timestamp each Epic
-// view, so that Slot Machine knows which Epics a user has seen and can then
+// view, so that Automat knows which Epics a user has seen and can then
 // integrate this data back in the targeting logic.
 // As a minimum, we expect the platform to call:
 // - getViewLog when building the payload to call the Contributions service.
 // - logView when rendering the Epic that has been fetched from the
 // Contributions service.
 // NOTE: this is a short term approach to ensure backwards compatibility with
-// the Frontend view log. As Slot Machine grows, we'll move towards a more
+// the Frontend view log. As Automat grows, we'll move towards a more
 // centralised way of managing the slot state from an upper level.
 import { ViewLog } from '../types';
 import { get as getItem, set as setItem } from '../lib/localStorage';
