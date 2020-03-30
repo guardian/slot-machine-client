@@ -1,7 +1,7 @@
 {
-  "name": "@guardian/slot-machine-client",
+  "name": "@guardian/automat-client",
   "version": "0.2.7",
-  "description": "Client lib for Slot Machine",
+  "description": "Client lib for Automat",
   "author": "Nicolas Long <nicolas.long@theguardian.com>",
   "license": "MIT",
   "main": "dist/index.js",
