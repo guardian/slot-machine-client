@@ -46,9 +46,11 @@ Once we hit version 1 we should use semver when doing this.
 
 Once the feature branch is merged into master, run:
 
-    yarn publish
+    yarn publishToNPM
 
 This will build and then publish to NPM.
+
+You should then push your (updated) master to origin.
 
 You can then update the clients!
 
