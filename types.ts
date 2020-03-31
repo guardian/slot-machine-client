@@ -7,9 +7,6 @@ type Tracking = {
     ophanComponentId: string;
     platformId: string;
     clientName: string;
-    campaignCode: string;
-    abTestName: string;
-    abTestVariant: string;
     referrerUrl: string;
 };
 
