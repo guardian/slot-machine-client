@@ -6,6 +6,7 @@ type Tracking = {
     ophanPageId: string;
     ophanComponentId: string;
     platformId: string;
+    clientName: string;
     campaignCode: string;
     abTestName: string;
     abTestVariant: string;
