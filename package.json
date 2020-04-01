@@ -1,6 +1,6 @@
 {
   "name": "@guardian/automat-client",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "Client lib for Automat",
   "author": "Nicolas Long <nicolas.long@theguardian.com>",
   "license": "MIT",
