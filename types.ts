@@ -42,6 +42,7 @@ export type Targeting = {
     epicViewLog?: ViewLog;
     weeklyArticleHistory?: WeeklyArticleHistory;
     mvtId: number;
+    countryCode?: string;
 
     // Note, it turns out that showSupportMessaging (defined in the Members Data
     // API) does not capture every case of recurring contributors or last
