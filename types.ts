@@ -1,7 +1,3 @@
-type Localisation = {
-    countryCode?: string;
-};
-
 type Tracking = {
     ophanPageId: string;
     ophanComponentId: string;
@@ -52,6 +48,5 @@ export type Targeting = {
 
 export type Metadata = {
     tracking: Tracking;
-    localisation: Localisation;
     targeting: Targeting;
 };
