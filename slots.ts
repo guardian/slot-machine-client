@@ -1,4 +1,6 @@
 import { Metadata } from './types';
+import { h } from 'preact';
+import { render, JSX } from 'preact/compat';
 
 const apiURL = 'https://contributions.guardianapis.com/epic';
 
@@ -9,4 +11,20 @@ export const getBodyEnd = (meta: Metadata, url: string = apiURL): Promise<Respon
         headers: { 'Content-Type': 'application/json' },
         body: json,
     });
+};
+
+// mountDynamic mounts a react (preact) element to a DOM element. The component
+// must use window.automat.renderElement as the render element function.
+export const mountDynamic = <A>(el: HTMLElement, component: JSX.Element, shadow = false): void => {
+    if (!window.automatRenderElement) {
+        window.automatRenderElement = h;
+    }
+
+    if (!shadow || !el.attachShadow) {
+        render(component, el);
+    }
+
+    const shadowRoot = el.attachShadow({ mode: 'open' });
+    const inner = document.createElement('div');
+    render(component, inner);
 };
