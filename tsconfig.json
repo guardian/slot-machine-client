@@ -12,7 +12,9 @@
         "noImplicitAny": true,
         "strictNullChecks": true,
         "noUnusedLocals": true,
-        "declaration": true
+        "declaration": true,
+        "jsx": "react",
+        "jsxFactory": "h"
     },
 
     "include": ["index.ts"],
