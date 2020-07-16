@@ -12,10 +12,22 @@ const Hello: React.FC<Props> = ({ name }: Props) => {
 describe('mountDynamic', () => {
     it('it should render a module using preact', () => {
         const el = document.createElement('div');
-        mountDynamic(el, <Hello name={'Wat'} />, false);
+        const attachShadow = false;
+        mountDynamic(el, <Hello name={'Wat'} />, attachShadow);
 
         const got = el.innerHTML;
         const want = '<div>My name is Wat!</div>';
+
+        expect(got).toBe(want);
+    });
+
+    it('it should render a module into a shadow dom', () => {
+        const el = document.createElement('div');
+        const attachShadow = true;
+        mountDynamic(el, <Hello name={'Wat'} />, attachShadow);
+
+        const got = el.shadowRoot?.innerHTML;
+        const want = '<div><div>My name is Wat!</div></div>'; // wrapper div because preact can't render directly onto shadow
 
         expect(got).toBe(want);
     });
