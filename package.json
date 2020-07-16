@@ -20,11 +20,16 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
     "@types/jest": "^24.0.23",
     "@types/md5": "^2.1.33",
     "@types/node": "^12.12.14",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
+    "babel-jest": "^26.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -35,6 +40,13 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "core-js": "3",
     "preact": "^10.4.5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "babel-jest"
+    }
   }
 }

@@ -1,0 +1,23 @@
+{
+    "presets": [
+        "@babel/preset-typescript",
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "ie": "11"
+                },
+                "useBuiltIns": "usage",
+                "corejs": "3"
+            }
+        ],
+        [
+            "@babel/preset-react",
+            {
+                "pragma": "h",
+                "pragmaFrag": "Fragment"
+            }
+        ],
+        "@emotion/babel-preset-css-prop"
+    ]
+}
