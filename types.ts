@@ -1,6 +1,5 @@
 type Tracking = {
     ophanPageId: string;
-    ophanComponentId: string;
     platformId: string;
     clientName: string;
     referrerUrl: string;
