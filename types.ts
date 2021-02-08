@@ -31,6 +31,7 @@ export type Targeting = {
     shouldHideReaderRevenue: boolean;
     isMinuteArticle: boolean;
     isPaidContent: boolean;
+    isSensitive?: boolean;
     tags: Tag[];
     epicViewLog?: ViewLog;
     weeklyArticleHistory?: WeeklyArticleHistory;
