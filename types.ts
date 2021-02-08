@@ -27,7 +27,7 @@ export type WeeklyArticleHistory = WeeklyArticleLog[];
 
 export type Targeting = {
     contentType: string;
-    sectionName: string;
+    sectionName?: string;
     shouldHideReaderRevenue: boolean;
     isMinuteArticle: boolean;
     isPaidContent: boolean;
