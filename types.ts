@@ -44,6 +44,7 @@ export type Targeting = {
     showSupportMessaging: boolean;
     isRecurringContributor: boolean;
     lastOneOffContributionDate?: number; // Timestamp
+    modulesVersion?: string;
 };
 
 export type Metadata = {
